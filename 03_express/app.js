@@ -11,7 +11,7 @@ APP.get("/", function(req, res){
     res.send("Entrou no site")
 })
 
-
+// Parametros não obrigatorios
 APP.get("/blog/:musica?", function(req, res){
     var music = req.params.musica
     if(music){
@@ -27,6 +27,18 @@ APP.get("/ola/:nome/:empresa", function(req, res){
     var nome = req.params.nome
     var emp = req.params.empresa
     res.send("<h1>Olá "+nome+"</h1>da empresa "+ emp)
+})
+
+
+// Query params são dinamicos e opcionais porém fornecem menos segurança na aplicação
+APP.get("/canal", function(req,res){
+    var nomecanal = req.query["canal"]
+    if (nomecanal){
+        res.send("<h1>Canal do youtube:</h1> "+ nomecanal)
+    } else {
+        res.send("<h1>Nenhum canal fornecido</h1>")
+    }
+    
 })
 
 // Inicilização do servidor
