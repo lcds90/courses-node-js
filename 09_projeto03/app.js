@@ -1,19 +1,33 @@
-const FS = require("fs"); // lib File-System para manipulação de arquivos
+const READER = require("./class/Reader");
+const WRITER = require("./class/Writer");
+const WRITER_PDF = require("./class/WriterPdf")
+const PROCESSOR = require("./class/Processor");
+const TABLE = require("./class/Table");
+const HTML = require("./class/HtmlParser");
 
- // leitor
-FS.readFile("./exemplo.txt", {encoding: "utf-8"}, (error, data) => {
-  if (error) {
-    console.log("Ocorreu um erro durante a leitura do arquivo");
-    console.log(error);
-  } else {
-    // ler o arquivo como conjunto de bytes para hexadecimal
-    console.log(data);
-  }
-});
+const LEITOR = new READER();
+const ESCRITOR = new WRITER();
 
-// escritor
-FS.writeFile("./exemplo.txt", "Novo contéudo de arquivo", (err) => {
-    if(err){
-        console.log("Ocorreu algum erro!")
-    }
-})
+async function main() {
+  var dados = await LEITOR.Read("./template/exemplo.csv");
+  var dados_processados = await PROCESSOR.Process(dados);
+  var tabela = new TABLE(dados_processados);
+  var date = new Date();
+  var seconds = date.getSeconds();
+  var minutes = date.getMinutes();
+  var hour = date.getHours();
+  var time = `${hour}${minutes}${seconds}`;
+
+  /*
+  console.log(tabela.RowCount)
+  console.log(tabela.ColumnCount)
+  console.log(html);
+  */
+
+  var html = await HTML.Parse(tabela);
+  ESCRITOR.Write(time + ".html", html);
+  WRITER_PDF.WritePdf(time + ".pdf", html)
+  console.log("O arquivo: " + time + " foi gerado como PDF e HTML com sucesso!");
+}
+
+main();
