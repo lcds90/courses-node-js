@@ -7,3 +7,5 @@
 07 - Programação Assincrona
 08 - Orientação a Objetos com Javascript 
 09 - Projeto Conversor de Excel para HTML e PDF 
+10 - Introdução a REST e criação de API
+11 - Consumo de API com Axios
