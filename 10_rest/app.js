@@ -4,6 +4,9 @@
 const EXPRESS = require("express");
 const APP = EXPRESS();
 const BP = require("body-parser");
+const CORS = require("cors");
+
+APP.use(CORS());
 
 APP.use(BP.urlencoded({ extended: false }));
 APP.use(BP.json());
@@ -68,7 +71,7 @@ APP.post("/game", (req, res) => {
     res.sendStatus(400);
   } else {
     db.games.push({
-      id: 6,
+      id: 5,
       title,
       price,
       year,

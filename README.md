@@ -6,10 +6,10 @@ Curso de Node.js do Guia do Programador realizado através da plataforma da Udem
   <h5>Projeto 02</h5><i>Blog com CRUD e painel administrativo </i>
   <h5>Projeto 03</h5><i>Projeto Conversor de Excel para HTML e PDF</i>
 
-Estrutura de pastas:
+<h6>Estrutura de pastas:</h6>
 
 <b>01</b> - Primeiro código<br>
-<b>02</b> - Aplicação Básica HTTP <br>
+<b>02</b> - Aplicação Básica H  TTP <br>
 <b>03</b> - Fundamentos do Express<br>
 <b>04</b> - Projeto Plataforma de Perguntas e Respostas<br>
 <b>05</b> - Projeto CRUD com Painel Admin<br>
