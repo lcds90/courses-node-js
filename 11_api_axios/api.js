@@ -39,7 +39,7 @@ function login() {
 axios
   .get("http://localhost:9090/games", axiosConfig)
   .then((res) => {
-    let games = res.data;
+    let games = res.data.games;
     let list = document.getElementById("list");
     games.forEach((game) => {
       let item = document.createElement("tr");

@@ -19,13 +19,12 @@ function auth(req, res, next) {
 
   if (authToken != undefined) {
     let token = authToken.split(" ")[1];
-    console.log(token)
+    console.log(token);
     JWT.verify(token, jwtSecret, (err, data) => {
       if (err) {
         res.status(401);
         res.json({ err: "Token inválido" });
       } else {
-
         // as variaveis de requisição podem ser utilizadas dentro da rota desde que utilizem o midleware
         req.token = token;
         req.loggedUser = { id: data.id, email: data.email };
@@ -84,8 +83,35 @@ var db = {
 };
 
 APP.get("/games", auth, (req, res) => {
+  let HATEOAS = [
+    {
+      href: "http://localhost:9090/auth",
+      method: "POST",
+      rel: "login",
+    },
+    {
+      href: "http://localhost:9090/game/0",
+      method: "GET",
+      rel: "get_game",
+    },
+    {
+      href: "http://localhost:9090/game",
+      method: "POST",
+      rel: "create_game",
+    },
+    {
+      href: "http://localhost:9090/game/0",
+      method: "PUT",
+      rel: "edit_game",
+    },
+    {
+      href: "http://localhost:9090/game/0",
+      method: "DELETE",
+      rel: "delete_game",
+    },
+  ];
   res.statusCode = 200;
-  res.json(db.games);
+  res.json({ games: db.games, _links: HATEOAS });
 });
 
 APP.get("/game/:id", auth, (req, res) => {
@@ -93,10 +119,32 @@ APP.get("/game/:id", auth, (req, res) => {
     res.sendStatus(400);
   } else {
     let id = parseInt(req.params.id);
+    let HATEOAS = [
+      {
+        href: "http://localhost:9090/games",
+        method: "GET",
+        rel: "get_all_games",
+      },
+      {
+        href: "http://localhost:9090/game/"+id,
+        method: "PUT",
+        rel: "edit_game",
+      },
+      {
+        href: "http://localhost:9090/game/"+id,
+        method: "DELETE",
+        rel: "delete_game",
+      },
+      {
+        href: "http://localhost:9090/game",
+        method: "POST",
+        rel: "create_game",
+      },
+    ];
     let game = db.games.find((g) => g.id == id);
     if (game != undefined) {
       res.statusCode = 200;
-      res.json(game);
+      res.json({game, _links: HATEOAS});
     } else {
       res.sendStatus(404);
     }

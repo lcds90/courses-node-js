@@ -17,5 +17,6 @@ Curso de Node.js do Guia do Programador realizado através da plataforma da Udem
 <b>07</b> - Programação Assincrona<br>
 <b>08</b> - Orientação a Objetos com Javascript <br>
 <b>09</b> - Projeto Conversor de Excel para HTML e PDF <br>
-<b>10</b> - Introdução a REST e criação de API<br>
+<b>10</b> - Introdução a REST e criação de API / Implementação de RESTful<br>
 <b>11</b> - Consumo de API com Axios<br>
+<b>12</b> - Validação de Formuários
