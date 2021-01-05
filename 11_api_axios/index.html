@@ -3,45 +3,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loja de Games</title>
+    <title>Listagem de Games</title>
     <link rel="shortcut icon" href="ico.png" type="image/png" />
     <!-- UIkit CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/css/uikit.min.css"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
-    <div class="uk-container">
-        <div>
-            <table class="uk-table uk-table-striped uk-table-hover">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Ano</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="list">
-                </tbody>
-            </table>
+    <div id="login" class="uk-container uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
+      <div class="uk-card uk-card-default uk-width-1-2@m border">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-auto">
+                    <img id="appLogo" class="uk-border-circle" width="40" height="40" src="ico.png">
+                </div>
+                <div class="uk-width-expand">
+                    <h3 id="appTitle" class="uk-card-title uk-margin-remove-bottom">Sistema de Listagem de Jogos</h3>
+                    <p id="appDesc" class="uk-text-meta uk-margin-remove-top">Realizado com Axios e API REST</p>
+                </div>
+            </div>
         </div>
-        <hr>
-        <form class="uk-child-width-1-4" uk-grid>
-            <legend class="uk-margin">Cadastrar Jogo</legend>
-            <input  autocomplete="off" placeholder="Título" type="text" name="title" id="title" class="uk-input">
-            <input autocomplete="off" placeholder="Ano" type="number" name="year" id="year" class="uk-input">
-            <input autocomplete="off" placeholder="Preço" type="number" name="price" id="price" class="uk-input">
-          <input class="uk-button uk-button-secondary uk-width-1-1" type="button" value="Criar" onclick="createGame()">
-          </form>
+        <div id="appForm" class="uk-card-body uk-background-secondary">
+            <input placeholder="E-mail" autocomplete="off" class="uk-input uk-margin-small" type="text" name="email" id="email">
+            <input placeholder="*****" autocomplete="off" class="uk-input uk-margin-small" type="password" name="password" id="password">
+          <hr>
+            <button id="appButton" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small" onclick="login()">Entrar</button>
+          </div>
+        <div class="uk-card-footer">
+            <a href="http://lcds90.github.io/" target="_blank" class="uk-button uk-button-text">Feito por Leonardo Santos</a>
+        </div>
+    </div>
+    </div>
+    <div class="uk-container" id="auth">
+      <div id="table-container">
+        <table class="uk-table uk-table-striped uk-table-hover">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Ano</th>
+              <th>Preço</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="list"></tbody>
+        </table>
+      </div>
+      <br />
+      <form class="uk-child-width-1-4 border" uk-grid>
+        <legend class="uk-margin">Cadastrar Jogo</legend>
+        <input
+          autocomplete="off"
+          placeholder="Título"
+          type="text"
+          name="title"
+          id="title"
+          class="uk-input"
+        />
+        <input
+          autocomplete="off"
+          placeholder="Ano"
+          type="number"
+          name="year"
+          id="year"
+          class="uk-input"
+        />
+        <input
+          autocomplete="off"
+          placeholder="Preço"
+          type="number"
+          name="price"
+          id="price"
+          class="uk-input"
+        />
+        <input
+          class="uk-button uk-width-1-1"
+          type="button"
+          value="Criar"
+          onclick="createGame()"
+          style="background-color: green; color: white;"
+        />
+      </form>
+      <hr />
+      <form class="uk-child-width-1-4 border" uk-grid>
+        <legend class="uk-margin">Editar Jogo</legend>
+        <input
+          autocomplete="off"
+          placeholder="ID"
+          type="hidden"
+          name="idEdit"
+          id="idEdit"
+          class="uk-input"
+        />
+        <input
+          autocomplete="off"
+          placeholder="Título"
+          type="text"
+          name="titleEdit"
+          id="titleEdit"
+          class="uk-input"
+        />
+        <input
+          autocomplete="off"
+          placeholder="Ano"
+          type="number"
+          name="yearEdit"
+          id="yearEdit"
+          class="uk-input"
+        />
+        <input
+          autocomplete="off"
+          placeholder="Preço"
+          type="number"
+          name="priceEdit"
+          id="priceEdit"
+          class="uk-input"
+        />
+        <input
+          class="uk-button uk-button-secondary uk-width-1-1"
+          type="button"
+          value="Editar"
+          onclick="updateGame()"
+          style="background-color: orange; color: white;"
+        />
+      </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="animations.js"></script>
     <script src="api.js"></script>
   </body>
 </html>
