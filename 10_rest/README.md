@@ -1,21 +1,87 @@
-# courses-node-js
+# API de Listagem de Games
+Esta API é utilizada para realizar a listagem de games, exemplo de utilização em app web na aula 11
+<br>
 
-Curso de Node.js do Guia do Programador realizado através da plataforma da Udemy
+:black_medium_square::black_large_square:<b>ENDPOINTS</b>:black_large_square::black_medium_square:	
 
-  <h5>Projeto 01</h5><i>Guia de Perguntas e Respostas</i>
-  <h5>Projeto 02</h5><i>Blog com CRUD e painel administrativo </i>
-  <h5>Projeto 03</h5><i>Projeto Conversor de Excel para HTML e PDF</i>
+### :green_circle: GET /games
+:black_small_square: Endpoint responsável pela listagem de dados
 
-<h6>Estrutura de pastas:</h6>
+#### Parametros
+:black_small_square: Nenhum parametro
 
-<b>01</b> - Primeiro código<br>
-<b>02</b> - Aplicação Básica H  TTP <br>
-<b>03</b> - Fundamentos do Express<br>
-<b>04</b> - Projeto Plataforma de Perguntas e Respostas<br>
-<b>05</b> - Projeto CRUD com Painel Admin<br>
-<b>06</b> - Funcionalidades ES6, ES7, ES8<br>
-<b>07</b> - Programação Assincrona<br>
-<b>08</b> - Orientação a Objetos com Javascript <br>
-<b>09</b> - Projeto Conversor de Excel para HTML e PDF <br>
-<b>10</b> - Introdução a REST e criação de API<br>
-<b>11</b> - Consumo de API com Axios<br>
+#### Respostas / Status Code
+:black_small_square:	:heavy_check_mark: <b>200</b> -> <i>Sucesso</i>
+:small_blue_diamond: Irá realizar o retorno de um array com a lista de games. <i>Exemplo:</i>
+
+```
+[
+    {
+        "id": 1,
+        "title": "Jogo 1",
+        "year": 2008,
+        "price": 60
+    },
+    {
+        "id": 2,
+        "title": "Jogo 2",
+        "year": 2016,
+        "price": 90
+    },
+    {
+        "id": 3,
+        "title": "Jogo 3",
+        "year": "2010",
+        "price": "0"
+    }
+]
+```
+***
+
+:black_small_square::triangular_flag_on_post:<b>401</b> <i>Falha de Autenticação</i>
+:small_blue_diamond: Erro durante autenticação da solicitação. Podendo ser devido token inválido ou expirado. <i>Exemplo:</i>
+
+```
+{
+    "err": "Token inválido"
+}
+```
+***
+
+***
+
+### :green_circle: POST /auth
+:black_small_square: Endpoint responsável pelo processo de login
+
+#### Parametros
+:black_small_square: E-mail e Senha
+```
+{
+    "email": "user@example.com",
+    "password": "password"
+}
+```
+***
+
+#### Respostas / Status Code
+:black_small_square:	:heavy_check_mark: <b>200</b> -> <i>Sucesso</i>
+:small_blue_diamond: Irá realizar o token para acesso aos endpoints protegidos pela API. <i>Exemplo:</i>
+
+```
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwiaWF0IjoxNjA5ODQ1MzA1LCJleHAiOjE2MTAwMTgxMDV9.RhttcJt8OGrVKgtTe_sTKfxkGjJ1MJ5Ehq62JMhi8kw"
+}
+```
+***
+
+:black_small_square::triangular_flag_on_post:<b>401</b> <i>Falha de Autenticação</i>
+:small_blue_diamond: Erro durante autenticação da solicitação. Podendo ser devido e-mail ou senha incorretos. <i>Exemplo:</i>
+
+```
+{
+    "err": "Credenciais invalidas!"
+}
+```
+***
+
+***
