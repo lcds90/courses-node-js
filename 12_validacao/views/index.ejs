@@ -13,21 +13,27 @@
   <body>
     
   <div class="row">
-    <form class="col s12">
+    <form method="post" action="/form" class="col s6">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Nome" id="email" type="text" class="validate">
+          <%= nomeError %>
+          <input name="nome" placeholder="Nome" id="name" type="text" class="validate" value="<%= nome %>">
           <label for="email">Nome</label>
         </div>
         <div class="input-field col s6">
-          <input id="E-mail" type="text" class="validate">
+          <%= emailError %>
+          <input name="email" id="email" type="text" class="validate" value="<%= email %>">
           <label for="email">E-mail</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="number" type="number" class="validate">
-          <label for="number">Pontos</label>
+        <div class="input-field col s6">
+          <%= pontosError %>
+          <input name="pontos" id="pontos" type="number" class="validate" value="<%= pontos %>">
+          <label for="pontos">Pontos</label>
+        </div>
+        <div class="input-field col s6">
+          <button>Confirmar</button>
         </div>
       </div>
     </form>
