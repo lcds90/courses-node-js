@@ -18,6 +18,12 @@
     <p v-if="showInfo === true">Contato: {{ numero }}</p>
     <p v-else>O usuário optou por ocultar as informações</p>
     <b>Chefe: {{ chefe.nome }} / {{ chefe.cargo }}</b>
+    <span v-if="isPremium">
+      <input @change="mudarCor" type="checkbox" checked /> Plano Premium
+    </span>
+    <span v-else>
+      <input @change="mudarCor($event)" type="checkbox" /> Plano Premium
+    </span>
 
     <!-- one-way-data binding colando dado somente como leitura -->
     <input type="text" :value="email" /><br />
@@ -38,6 +44,12 @@ export default {
     numero: Number,
     showInfo: Boolean,
     isPremium: Boolean,
+  },
+  methods: {
+    mudarCor: function ($event) {
+      console.log($event)
+      this.isPremium = !this.isPremium;
+    },
   },
 };
 </script>
