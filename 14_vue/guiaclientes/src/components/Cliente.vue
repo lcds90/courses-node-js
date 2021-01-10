@@ -1,11 +1,11 @@
 <template>
   <div
     :class="{
-      'container-cliente': !isPremium,
-      'container-premium': isPremium,
+      'container-cliente': !cliente.isPremium,
+      'container-premium': cliente.isPremium,
     }"
   >
-    <h1>Cliente {{ nome }}</h1>
+    <h1>Cliente {{ cliente.nome }}</h1>
     <hr />
     <!-- reatividade com variaveis de script -->
     <!--
@@ -13,12 +13,12 @@
             quando v-show for falso, ele não irá renderizar novamente o elemento 
             não existe else em v-show
         -->
-    <p v-show="showInfo === true">Cargo: {{ tipo }}</p>
-    <p v-if="showInfo === true">E-mail: {{ email }}</p>
-    <p v-if="showInfo === true">Contato: {{ numero }}</p>
+    <p v-show="cliente.showInfo === true">Cargo: {{ cliente.tipo }}</p>
+    <p v-if="cliente.showInfo === true">E-mail: {{ cliente.email }}</p>
+    <p v-if="cliente.showInfo === true">Contato: {{ cliente.numero }}</p>
     <p v-else>O usuário optou por ocultar as informações</p>
     <b>Chefe: {{ chefe.nome }} / {{ chefe.cargo }}</b>
-    <span v-if="isPremium">
+    <span v-if="cliente.isPremium">
       <input @change="mudarCor" type="checkbox" checked /> Plano Premium
     </span>
     <span v-else>
@@ -26,24 +26,15 @@
     </span>
 
     <!-- one-way-data binding colando dado somente como leitura -->
-    <input type="text" :value="email" /><br />
-    <input type="text" v-model="numero" /><br />
+    <input type="text" :value="cliente.email" /><br />
+    <input type="text" v-model="cliente.numero" /><br />
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      tipo: "comprador",
-    };
-  },
   props: {
     chefe: Object,
-    nome: String,
-    email: String,
-    numero: Number,
-    showInfo: Boolean,
-    isPremium: Boolean,
+    cliente: Object
   },
   methods: {
     mudarCor: function ($event) {
