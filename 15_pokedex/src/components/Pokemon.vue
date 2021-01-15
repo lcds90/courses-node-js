@@ -1,6 +1,6 @@
 <template>
   <div id="pokemon">
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-image">
         <figure>
           <img :src="currentImg" :alt="'Imagem do Pokemon ' + name" />
@@ -22,7 +22,23 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img :src="currentImg" :alt="'Imagem do Pokemon ' + name" />
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p class="title is-4">{{ num + 1 }} - {{ name | upper }}</p>
+          <p class="subtitle is-6">{{ pokemon.type }}</p>
+        </div>
+      </div>
+      <div class="media-right">
+        <button v-on:click="mudar($event)" class="button is-dark">Mudar Sprite</button>
+      </div>
+    </article>
   </div>
 </template>
 <script>
@@ -78,6 +94,27 @@ export default {
 
 <style scoped>
 #pokemon {
-  margin-top: 2%;
+  margin: 10% 5%;
+  padding:5%;
+  display:flex;
+  justify-content:space-between;
+  background-color: rgba(165, 42, 42, 0.37);
+  filter:drop-shadow(5px 5px 15px rgba(0,0,0,.25));
+  color:white;
+  align-content:space-between;
+  border:beige 2px solid;
+  outline:5px double brown;
+}
+p:nth-child(1){
+  color:white;
+  letter-spacing:5px;
+  font-size:1rem;
+}
+
+p:nth-child(2){
+  font-size:3rem;
+  color:whitesmoke;
+  filter:drop-shadow(0px 0px 5px rgba(255,255,255,.5));
+  font-style:italic;
 }
 </style>
