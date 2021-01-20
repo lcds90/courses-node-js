@@ -15,17 +15,17 @@ class UserController {
     var { email, name, password } = req.body;
 
     // return serve para terminar função após falha
-    if (email == undefined) {
+    if (email == undefined || email == '' || email == ' ') {
       res.status(400);
       res.json({ err: "Email inválido" });
       return;
     }
-    if (name == undefined) {
+    if (name == undefined || name == '' || name == ' ') {
       res.status(400);
       res.json({ err: "Nome inválido" });
       return;
     }
-    if (password == undefined) {
+    if (password == undefined || password == '' || password == ' ') {
       res.status(400);
       res.json({ err: "Senha inválida" });
       return;
@@ -130,10 +130,11 @@ class UserController {
         res.json({ token: token });
       } else {
         res.status(406);
-        res.send("Dados incorretos");
+        res.json({err: "Dados incorretos"});
       }
     } else {
-      res.json({ status: false });
+      res.status(404)
+      res.json({ status: false , err: "Usuário inexistente"});
     }
   }
 }

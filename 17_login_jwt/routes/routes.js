@@ -14,7 +14,7 @@ router.delete("/user/:id", AdminAuth, UserController.remove);
 router.post("/recoverpassword", UserController.recoverPassword);
 router.post("/changepassword", UserController.changePassword);
 router.post("/login", UserController.login);
-
+router.post("/validate", AdminAuth, HomeController.validate);
 // Método para gerar tokens UUID ou GUID
 
 // tabela: passwordtokens

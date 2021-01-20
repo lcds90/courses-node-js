@@ -2,9 +2,11 @@
 
 Curso de Node.js do Guia do Programador realizado através da plataforma da Udemy
 
-  <h5>Projeto 01</h5><i>Guia de Perguntas e Respostas</i>
-  <h5>Projeto 02</h5><i>Blog com CRUD e painel administrativo </i>
-  <h5>Projeto 03</h5><i>Projeto Conversor de Excel para HTML e PDF</i>
+  <h5>Projeto 01</h5><i>Guia de Perguntas e Respostas</i> (pasta04)
+  <h5>Projeto 02</h5><i>Blog com CRUD e painel administrativo </i> (pasta05)
+  <h5>Projeto 03</h5><i>Projeto Conversor de Excel para HTML e PDF</i> (pasta09)
+  <h5>Projeto 04</h5><i>Pokedex com Vue e API do Pokemon</i> (pasta15)
+  <h5>Projeto 05</h5><i>Projeto integração entre Vue e API de login da pasta 17</i> (pasta18)
 
 <h6>Estrutura de pastas:</h6>
 
