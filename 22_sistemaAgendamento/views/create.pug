@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Agendamento
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1", crossorigin="anonymous")
+        link(rel="stylesheet", href="css/style.css")
+    body.row.align-items-center.container-fluid
+        .container
+            .card.d-flex.justify-content-center.align-items-center.w-50.mx-auto.p-4
+                h1.card-title Cadastro de Consulta
+                .container.card-body
+                    form
+                        input#name(type="text", name="name", placeholder="Nome").form-control.mb-2
+                        input#email(type="email", name="email", placeholder="Email").form-control.mb-2
+                        input#cpf(type="text", name="cpf", placeholder="CPF").form-control.mb-2
+                        input#desc(type="text", name="desc", placeholder="Descrição").form-control.mb-2
+                        input#date(type="datetime", name="date", placeholder="Data").form-control.mb-2
+                .card-footer.w-100.d-flex.justify-content-center.align-items-center
+                    button.btn.btn-success Cadastrar
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' integrity='sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW' crossorigin='anonymous')
