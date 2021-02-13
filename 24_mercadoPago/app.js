@@ -53,6 +53,6 @@ APP.get("/pagar", async (req, res) => {
   }
 });
 
-APP.listen(4000, (req, res) => {
+APP.listen(process.env.PORT || 4000, (req, res) => {
   console.log("Servidor rodando em http://localhost:4000");
 });
