@@ -1,0 +1,8 @@
+{
+    "name": "Mercado Pago",
+    "description": "Teste",
+    "repository": "https://github.com/lcds90/courses-node-js/tree/main/24_mercadoPago",
+    "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/main/public/node.svg",
+    "keywords": ["node", "express", "heroku"]
+  }
+  
