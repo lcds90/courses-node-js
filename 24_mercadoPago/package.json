@@ -1,0 +1,33 @@
+{
+  "name": "24_mercadopago",
+  "version": "1.0.0",
+  "description": "Sistema com integração com mercado pago",
+  "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcds90/courses-node-js.git"
+  },
+  "author": "lcds90",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lcds90/courses-node-js/issues"
+  },
+  "homepage": "https://github.com/lcds90/courses-node-js#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mercadopago": "^1.5.4",
+    "pug": "^3.0.0"
+  }
+}
