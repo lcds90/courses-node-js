@@ -23,7 +23,7 @@ APP.get("/pagar", async (req, res) => {
   // fator importante para determinar cada venda, UUID && Data e estar salvo
   let id = "" + Date.now();
   let title = "5x produto; 1x exemplo; 2x teste"; // req.body.desc
-  let email = "teste@teste.com"
+  let email = "teste@teste.com";
   let currency_id = "BRL";
   let unit_price = parseFloat(150); // obrigatorio ser float
 
@@ -49,8 +49,13 @@ APP.get("/pagar", async (req, res) => {
     // banco.salvarPagamento({id, email})
     return res.redirect(pagamento.body.init_point);
   } catch (error) {
-    return res.send(error.message)
+    return res.send(error.message);
   }
+});
+
+APP.post("/not", (req, res) => {
+  console.log(req.query);
+  res.send("OK");
 });
 
 APP.listen(process.env.PORT || 4000, (req, res) => {
