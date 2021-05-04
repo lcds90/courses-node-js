@@ -114,7 +114,7 @@ describe("Autenticação", () => {
 
   test("Deve impedir usuario de realizar login com senha errada", () => {
     return request.post("/auth")
-    .send({email: mainUser.email, password: "senhaErrada"})
+    .send({email: mainUser.email, password: "senha"})
     .then((res)=> {
       expect(res.statusCode).toEqual(403)
       expect(res.body.errors.password).toEqual("Dados incorretos")
